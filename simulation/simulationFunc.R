@@ -13,6 +13,7 @@ sbmA <- function(index, numNode, rho, Bmat, block.sizes) {
   return(Amat)
 }
 
+## Afunc to generate L=numGraph graphs in HoSBM
 Afunc <- function(seed,numGraph, numNode, rho, Bmat, block.sizes) {
   set.seed(seed)
   Alist <- lapply(1:numGraph, sbmA,
@@ -31,6 +32,7 @@ Afunc <- function(seed,numGraph, numNode, rho, Bmat, block.sizes) {
 # }
 
 
+# align the clustering membership based on Hamming distance
 # The following code from Bias-adjusted paper Github
 # requires both vec1 and vec2 to have the same number of unique clusters
 align_two_membership_vectors <- function(vec1, vec2, override = F){

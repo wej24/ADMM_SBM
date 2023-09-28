@@ -2,7 +2,7 @@
 # Simulation Function for HeSBM
 ##########################################
 
-## A square
+## A square in bias-ajusted clustering 
 A_square <- function(Alist) {
   L <- length(Alist)
   sum_mat <- numeric(0)
@@ -20,15 +20,15 @@ A_square <- function(Alist) {
 }
 
 
-## estB on each Layer
+## estimate B on each Layer
 simB <- function(A, Zhat) {
   Bhat <- (t(Zhat)/colSums(Zhat)) %*% A %*% t(t(Zhat)/colSums(Zhat))
   return(Bhat[upper.tri(Bhat,diag = TRUE)])
 }
 
 
-## estB on each Graph community
-
+## estimate B on each Graph community
+## indB is the indices of all graphs in $\tilde{\ell}$-th group
 estB <- function(seed, Alist, Z, indB, nfold, lambdas, Winit, sparseRho, B,
                  warm = 0, parallel = TRUE, nCores = 10, 
                  convergence = 1e-10, maxiter = 10000, rho) {

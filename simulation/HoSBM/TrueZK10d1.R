@@ -16,10 +16,10 @@ source("../simulationFunc.R")
 ## Data generate
 seed <- 1 ## seed for one single replication to ensure ARI >= 0.8
 K <- 10
-numGraph <- 100
-numNode <- 1000
+numGraph <- 100 ## number of graphs L
+numNode <- 1000 ## number of nodes n 
 block.sizes <- c(rep(0.15,2),rep(0.1,3), rep(0.08,5)) * numNode
-sparseRho <- 0.1
+sparseRho <- 0.1 ## sparse factor in SBM
 u <- 0.9^(1:K)
 Bmat <- u %*% t(u)
 memb_index <- unlist(lapply(1:K, function(x) replicate(block.sizes[x], x)))

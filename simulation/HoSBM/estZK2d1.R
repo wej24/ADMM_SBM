@@ -22,12 +22,12 @@ source("../simulationFunc.R")
 ## Data generate
 seed <- 1 ## seed for one single replication
 K <- 2
-numGraph <- 100
-numNode <- 1000
+numGraph <- 100 ## number of graphs L
+numNode <- 1000 ## number of nodes n
 block.sizes <- c(1/4, 3/4) * numNode
-sparseRho <- log(numNode) / numNode
+sparseRho <- log(numNode) / numNode ## sparse factor in SBM 
 u1 <- c(0.9, 0.4)
-Bmat <- u1 %*% t(u1)
+Bmat <- u1 %*% t(u1) ## true probability matrix
 memb_index <- unlist(lapply(1:K, function(x) replicate(block.sizes[x], x)))
 Alist <- Afunc(seed, numGraph, numNode, sparseRho, Bmat, block.sizes)
 Abar <- Reduce("+", Alist) / length(Alist)

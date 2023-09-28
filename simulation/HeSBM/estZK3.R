@@ -21,11 +21,11 @@ source("../simulationFuncHeSBM.R")
 ## Data generate
 seed <- 101 ## seed for one single replication
 K <- 3
-numGraph <- 50
-numNode <- 1000
+numGraph <- 50 ## number of graph for each graph community
+numNode <- 1000 ## number of nodes n 
 block.sizes <- c(1/4, 1/4, 1/2) * numNode
 memb_index <- unlist(lapply(1:K, function(x) replicate(block.sizes[x], x)))
-sparseRho <- log(numNode) / numNode
+sparseRho <- log(numNode) / numNode ## sparse factor in SBM
 
 .l2norm <- function(x){sqrt(sum(x^2))}
 vec1 <- c(1,1,sqrt(2))
@@ -48,7 +48,7 @@ Alist <- c(Alist1, Alist2,Alist3,Alist4)
 A_2 <- A_square(Alist)
 svdA_2 <- svdr(A_2, K+1)
 
-## do clustering to estZ
+## do clustering to estimate Z
 U2 <- svdA_2$u[,1:K] %*% diag(svdA_2$d[1:K])
 mG <- Mclust(U2, G=K)
 memb2 <- align_two_membership_vectors(memb_index, mG$classification)
@@ -56,7 +56,7 @@ Z <- matrix(0,numNode,K)
 Z[cbind(1:numNode,memb2)] <- 1
 
 
-## estB for each layer and cluster layer
+## estimate B for each layer and then cluster layer
 uppB <- lapply(Alist,simB, Zhat=Z)
 uppB <- do.call(rbind,uppB)
 mB <- Mclust(uppB, G=4)
@@ -64,12 +64,13 @@ memb_B <- c(rep(1,50),rep(2,50), rep(3,50),rep(4,50))
 ARIB <- adj.rand.index(memb_B, mB$classification)
 memb_B2 <- align_two_membership_vectors(memb_B, mB$classification)
 
+## indices of graphs in each graph community 
 indB1 <- which(memb_B2 == 1)
 indB2 <- which(memb_B2 == 2)
 indB3 <- which(memb_B2 == 3)
 indB4 <- which(memb_B2 == 4)
 
-## do estB
+## estimate B for each graph community 
 lambdas <- 10^seq(-4,-1.5,length.out=150)
 Winit <- matrix(0,K,K)
 nfold <- 5
