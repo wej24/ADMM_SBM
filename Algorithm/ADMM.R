@@ -1,6 +1,15 @@
-###########################################
+############################################################
 # ADMM algorithm (Algorithm 1 in paper) 
-###########################################
+# Required Input:
+#   S:  n * n matrix for Abar
+#   X:  n * K matrix for membership matrix
+#   lambda: tuning parameter
+#   rho: a positive constant variable rho1 in Algorithm 1
+# Output:
+#   W and Z are the estimations of probability matrix B
+#   Since the nuclear norm is on Z, we use Z as the final 
+#   estimation of probability matrix B
+###########################################################
 
 srl <- function(S,X,lambda,
                 rho,convergence=1e-10,maxiter=10000,
