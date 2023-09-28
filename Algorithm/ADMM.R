@@ -1,5 +1,5 @@
 ############################################################
-# ADMM algorithm (Algorithm 1 in paper) 
+# ADMM algorithm named as srl (Algorithm 1 in paper) 
 # Required Input:
 #   S:  n * n matrix for Abar
 #   X:  n * K matrix for membership matrix
