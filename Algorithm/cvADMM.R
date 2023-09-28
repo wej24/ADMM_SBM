@@ -1,7 +1,26 @@
-#######################################
-# M-fold cross-validation for 
+######################################################################
+# M-fold cross-validation named as cvSRL for 
 # multiple A (Algorithm 2 in paper)
-#######################################
+# Required Input:
+#   seed: random seed to reproduce the results
+#   nfold: number of folds in CV
+#   Alist: a list of n * n adjacency matrix
+#   Z: n * K membership matrix
+#   lambdas: a sequency of lambda values
+#   rho: a positive constant variable rho1 in Algorithm 1
+#   warm: 0 or 1  to determine 
+#     whether to use warm start in ADMM algorithm. 0 means not use
+#   parallel: True or False to determine whether to use parallel
+#     computing in CV
+#   nCores: how many cores will be used in parallel computing
+# Output:
+#   cv.error: a list of cv errors for each lambda value
+#   indLambda: the best lambda selected by CV
+
+# gridLambdaSRL function is to estimate probability matrix
+# when we use warm start in CV. It is same as srl function if
+# we do not use warm start.
+##################################################################
 
 cvSRL <- function(seed, nfold, Alist, Z, 
                   lambdas, rho, Winit = NULL,
