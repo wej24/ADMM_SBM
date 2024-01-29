@@ -1,5 +1,5 @@
 # Simultaneous estimation of connectivity and dimensionality in samples of networks
-This repository contains R code to run the ADMM algorithm and simulations in the "Simultaneous estimation of connectivity and dimensionality in Samples of Networks" paper. 
+This repository contains R code to run the ADMM algorithm and simulations in the paper "Simultaneous estimation of connectivity and dimensionality in Samples of Networks" by Wenlong Jiang and Joshua Cape. 
 
 ADMM.R file in the Algorithm folder contains the main ADMM algorithm with a single $\lambda$ value.
 
