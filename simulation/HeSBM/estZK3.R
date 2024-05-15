@@ -1,5 +1,5 @@
 ########################################################################
-# Simulation in section 6.3
+# Simulation in section 5.4
 # Setting: K=3
 # Since we run each replicate on the cluster,
 # the following code runs one replicate 

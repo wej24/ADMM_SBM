@@ -1,5 +1,5 @@
 #####################################################################
-# Simulation in section 6.1
+# Additional simulations in the supplement
 # Setting 1: K=2, d=2
 # Since we run each replicate on the cluster,
 # the following code runs one replicate 
