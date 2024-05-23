@@ -144,10 +144,13 @@ cvRes <- list()
 for (i in 1:nfold) {
   cvRes[[i]] <- cvFunc(fold_list, i, Alist, Z, lambdas, rho=2.5, Winit=matrix(0,K,K), warm=warm)
 }
-resSummary <- list(Bour=Bour, r=r, resSRL=res, cvRes=cvRes)
+cvRes <- do.call(rbind, cvRes)
 cvMean <- colMeans(cvRes)
-which.min(cvMean)
-unlist(lapply(1:length(fold_list), function(x) qr(resSummary$resSRL$estW[[ind[x]]])$rank))
+indLambda <- which.min(cvMean)
+Bour <- res$estW[[indLambda]]
+r <- qr(Bour)$rank
+resSummary <- list(Bour=Bour, r=r, resSRL=res, cvRes=cvRes)
+unlist(lapply(1:length(fold_list), function(x) qr(resSummary$resSRL$estW[[which.min(cvRes[x,])]])$rank))
 apply(cvRes,1, which.min)
 ## Bour with one combination of train and validation gives rank 2
 B3 <- resSummary$resSRL$estW[[688]]
