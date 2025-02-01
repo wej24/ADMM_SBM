@@ -13,10 +13,11 @@ Note: The code only run one replicate and one case for each setting in the paper
 4. MonoSBM_K10d2_estZ.R contains the code to run the simulation in the section 5.2 in the main text.
 5. MonoSBM_K10d2_reEstZ.R contains the code to run the simulation in the section 5.3 in the main text.
 6. MultiSBM_K3_estZ.R contains the code to run the simulation in the section 5.4 in the main text.
-7. real_data.R contains the code to run the real data analysis in the section 6 in the main text.
-8. MonoSBM_single_K2d1_TrueZ.R and MonoSBM_single_K2d2_TrueZ.R contain the code to run the simulation in the section S3.1 in the supplement.
-9. MonoSBM_K2d1_TrueZ.R and MonoSBM_K2d2_TrueZ.R contain the code to run the simulation in the section S3.2 in the supplement.
-10. MonoSBM_K2d1_estZ.R and MonoSBM_K2d2_estZ.R contain the code to run the simulation in the section S3.3 in the supplement.
+7. MonoSBM_single_K2d1_TrueZ.R and MonoSBM_single_K2d2_TrueZ.R contain the code to run the simulation in the section S3.1 in the supplement.
+8. MonoSBM_K2d1_TrueZ.R and MonoSBM_K2d2_TrueZ.R contain the code to run the simulation in the section S3.2 in the supplement.
+9. MonoSBM_K2d1_estZ.R and MonoSBM_K2d2_estZ.R contain the code to run the simulation in the section S3.3 in the supplement.
 
-# More on real data
+# Real data in the paper
+real_data.R contains the code to run the real data analysis in the section 6 in the main text.
+
 If researchers are interested in the original real data used in the paper, you can request the data by contacting the authors of "Bias-adjusted spectral clustering in multi-layer stochastic block models. Journal of the American Statistical Association 0(0), 1–13" by Jing Lei and Kevin Z. Lin. The Bias-adjusted spectral clustering code can be found at https://github.com/linnykos/networkSoSD. 
