@@ -7,6 +7,7 @@
 library(mclust)
 library(corrplot)
 library(Matrix)
+library(igraph)
 
 # load data
 load('real_data.RData')
@@ -36,6 +37,13 @@ for (i in n[-8]) {
 # do clustering for layer group
 uppB <- lapply(adj_list,simB, Zhat=Z)
 uppB <- do.call(rbind,uppB)
+svdB <- svd(uppB)
+graphics.off()
+png(filename = "svd_upperB.png", width = 10, height = 10, units = "in", res = 100)
+par(pty="s")
+plot(svdB$d, ylab = "Singular Values", pch=16,cex.axis = 2.5, cex.lab = 2.5, cex = 4)
+dev.off()
+dim_select(svdB$d)
 mB <- Mclust(uppB, G=3)
 summary(mB)
 mB$classification
